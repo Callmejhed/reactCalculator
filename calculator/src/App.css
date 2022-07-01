@@ -1,0 +1,88 @@
+:root{
+    --fontColor: #d5d5d5;
+    --fontColorInvert: #1b1b1b;
+    --operatorBackgroundColor: #d81e1e;
+    --numberBackgroundColor: #1e1e1e;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 100%;
+    font-family: "Fira Sans", sans-serif;
+    overflow: hidden;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--fontColorInvert);
+}
+
+#root{
+    max-width: 350px;
+    background-color: var(--fontColor);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.screen{
+    padding: 1rem;
+    font-size: 24px;
+    text-align: right;
+    background-color: var(--fontColorInvert);
+    color: var(--fontColor);
+    font-weight: 300;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.screen span{
+    margin-right: 1rem;
+   font-size: 14px;
+   color: grey; 
+}
+
+button{
+    appearance: none;
+    border: none;
+    outline: none;
+    color: var(--fontColorInvert);
+    font-size: 20px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: .4s;
+}
+
+button:hover{
+    opacity: .9;
+}
+
+.keypad{
+    border-radius: 0 0 1rem 1rem;
+}
+
+.operators{
+    display: flex;
+}
+
+.operators button{
+    flex: 1 1 0%;
+    background-color: var(--operatorBackgroundColor);
+    font-weight: 550;
+}
+
+.numbers{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.numbers button{
+    flex: 1 1 33.333%;
+    background-color: var(--numberBackgroundColor);
+    color: var(--fontColor);
+}
