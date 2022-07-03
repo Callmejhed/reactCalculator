@@ -5,6 +5,9 @@ export default function App() {
     const [calc, setCalc] = useState("")
     const [result, setResult] = useState("")
     const operators = [".", "-", "+", "*", "/"]
+ 
+    //This makes the results re-render whenever calc changes to keep it accurate
+    function accurateResults(){}
     
     //This function creates all the numbers except 0 because i was too lazy to type them all
     function createNumbers(){
@@ -21,7 +24,7 @@ export default function App() {
         return numbers
     }
 
-    //This function displays the values being typed in. Basically the problem/equation 
+    //This function displays the values being typed in. Basically the problem equation 
     function updateCalc(value){
         //This if statement is basically saying if (if the value we just entered is an operator and there is no calculation) or (the value we just entered is an operator and the last value we entered is also an operator) then return (i.e don't let anything happen) else append value to calc
         if (
@@ -53,23 +56,14 @@ export default function App() {
         }
         const value = calc.slice(0, -1)
         setCalc(value)
+        setResult(calc)
     }
-
-    // const possibleInputs = [
-    //     "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "*", "/"
-    // ]
 
     //This function works as a clear screen key
     function clearScreen(){
-        //I'm not too sure about this one but i think it should loop through string calc then each time it loops remove the first element in the string. Then reset the calc variable each time
-        if (calc == '')
-        {
-            return
-        }
-        for (i=0; i<calc.length; i++){
-            const value = calc.slice(1)
-            setCalc(value)
-        }
+        //Basically just set cal to an empty string
+        setCalc("")
+        setResult(calc)
     }
 
 
@@ -80,20 +74,20 @@ export default function App() {
             </div>
 
             <div className="keypad">
-            <div className="operators">
-                <button onClick={() => updateCalc("+")}>+</button>
-                <button onClick={() => updateCalc("-")}>-</button>
-                <button onClick={() => updateCalc("/")}>/</button>
-                <button onClick={() => updateCalc("*")}>*</button>
-                <button onClick={backSpace}>DEL</button>
-                <button onClick={clearScreen}>AC</button>
-            </div>
-            <div className="numbers">
-                {createNumbers()}
-                <button onClick={() => updateCalc(".")}>.</button>
-                <button onClick={() => updateCalc("0")}>0</button>
-                <button onClick={calculate}>=</button>
-            </div>
+                <div className="operators">
+                    <button onClick={() => updateCalc("+")}>+</button>
+                    <button onClick={() => updateCalc("-")}>-</button>
+                    <button onClick={() => updateCalc("/")}>/</button>
+                    <button onClick={() => updateCalc("*")}>*</button>
+                    <button onClick={backSpace}>DEL</button>
+                    <button onClick={clearScreen}>AC</button>
+                </div>
+                <div className="numbers">
+                    {createNumbers()}
+                    <button onClick={() => updateCalc(".")}>.</button>
+                    <button onClick={() => updateCalc("0")}>0</button>
+                    <button onClick={calculate}>=</button>
+                </div>
         </div>
         </>
     );
